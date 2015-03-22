@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Code Carrots JS</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -49,14 +49,334 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
+					<br/>
 					<h1>Code Carrots</h1>
-					<h3>Zajęcia z programowania w języku JavaScript</h3>
+					<h3>System kontroli wersji <strong>GIT</strong></h3>
+					<br/>
 					<p>
-						<small>Ogranizatorka zajęć: <a target="_blank" href="mailto:zuzapodwinska@gmail.com">Zuza Podwińska</a></small>
+						<small>Autorka prezentacji: <a target="_blank" href="mailto:litwinska.barbara@gmail.com">Barbara Litwińska</a></small>
 					</p>
 				</section>
-			</div>
 
+				<section>
+					<h3>Czego się dziś nauczymy?</h3>
+					<div class="fragment roll-in">Czym jest git?</div>
+					<br/>
+					<div class="fragment roll-in">
+						<p>Konfiguracja</p>
+						<small class="code">(git config)</small>
+					</div>
+					<div class="fragment roll-in">
+						<p>Podstawy pracy z gitem i moje pierwsze repo</p>
+					  <small class="code">(git init, status, add, rm, commit, log, diff, reset)</small>
+					</div>
+					<div class="fragment roll-in">
+						<p>Praca ze zdalnym repozytorium</p>
+						<small class="code">(git clone, pull, merge, push)</small>
+					</div>
+				</section>
+
+				<section>
+					<section>	
+						<h3>Czym jest git?</h3>
+						<ul>
+							<li>Git to rozproszony system kontroli wersji</li>
+							<li>Pozwala m.in. na:
+								<ul>
+									<li>śledzenie zmian w plikach</li>
+									<li>łatwy powrót do wcześniejszej wersji pliku</li>
+									<li>sprawną zdalną współpracę</li>
+								</ul>
+							</li>
+							<li>'Nie programuję, czy potrzebny mi git?'</li>
+						</ul>
+					</section>
+					<section>
+						<img src="distributed_small.png">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Konsola czy Git for Windows?</h3>	
+					</section>
+					<section>
+						<img src="konsola.png">
+					</section>
+					<section>
+						<img src="ghwindows.png">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Konfiguracja</h3>
+						
+						<ul>
+							<li>
+								<p>Ustawiamy swoje dane:</p>
+								<p class="code">git config --global user.name „...”</p>
+								<p class="code">git config --global user.email ...</p>
+							</li>
+						<ul>
+					</section>
+					<section>
+						<ul>
+							<li>
+								<p>Konfiguracja może być przechowywana w plikach:</p>
+								<p class="code">/etc/gitconfig</p>
+								<p class="code">~/.gitconfig</p>
+								<p class="code">.git/config</p>
+							</li>
+							<li>
+								<p>Aby wyświetlić wszystkie ustawienia:</p>
+								<p class="code">git config –-list</p>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h3>Podstawy pracy z gitem i moje pierwsze repo</h3>
+				</section>
+
+				<section>
+					<h2 class="code">git init</h2>
+					<br/>
+					<p>Wywołane w istniejącym katalogu utworzy podkatalog .git zawierający szkielet repozytorium</p>
+					<br>
+					<small class="code fragment roll-in">
+						<p>Initialized empty Git repository</p>
+						<img src="success.jpg">
+					</small>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="code">git status</h2>
+						<br/>
+						<p>Podglądamy repozytorium</p>
+						<br>
+						<small class="code fragment roll-in">
+							<p>On branch master</p>
+							<p>nothing to commit, working directory clean</p>
+						</small>
+					</section>
+					<section>
+						<h2 class="code">.gitignore</h2>
+						<br/>
+						<ul>
+							<li>Plik zawierający informacje, których plików nigdy nie chcemy dodawać do repozytorium.</li> 
+							<li>Nie będą one widoczne również po wywołaniu <span class="code">git status</span></li>
+							<br/>
+							<li>
+								<span class="code">secret.js</span>
+								<p><small>(Ukryje plik secret.js)</small></p>
+							</li>
+							<li> 
+								<span class="code">*.txt</span>
+								<p><small>(Spowoduje, że git zignoruje wszystkie pliki o rozszerzeniu .txt</small></p>
+							</li>
+						</ul>	
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Jak to działa?</h3>
+						<p>Plik może znajdować się w czterech stanach:</p>
+						<ul>
+							<li class="fragment roll-in"><strong>nieśledzony</strong> (eng. <span class="code">untracked</span>, zaraz po stworzeniu nowego pliku)</li>
+							<li class="fragment roll-in"><strong>śledzony</strong> (eng. <span class="code">staged</span>, zmiany przeznaczone do zatwierdzenia przy następnej operacji <span class="code">commit</span>)</li>
+							<li class="fragment roll-in"><strong>zmodyfikowany</strong> (eng. <span class="code">modified</span>, plik zmieniony, zmiany niezapisane do bazy)</li>
+							<li class="fragment roll-in"><strong>zatwierdzony</strong> (eng. <span class="code">commited</span>, bezpiecznie zachowany w lokalnej bazie danych)</li>
+						</ul>
+					</section>
+					<section>
+						<img src="git-flow.png">
+					</section>
+					<section>
+						<h3>Jak to działa</h3>
+						<ol>
+							<li>Dokonujesz modyfikacji plików w katalogu roboczym.</li>
+							<li>Oznaczasz zmodyfikowane pliki jako śledzone (<span class="code">add</span>), dodając ich bieżący stan do przechowalni.</li>
+							<li>Dokonujesz zatwierdzenia (<span class="code">commit</span>), podczas którego zawartość plików z przechowalni jest zapisywana.</li>
+						</ol>
+					</section>
+				</section>
+
+				<section>
+					<h2 class="code">git add/rm</h2>
+					<br/>
+					<ul>
+						<li>Czas wprowadzić zmiany!</li>
+						<li>
+							<p>Dodanie wszystkich zmian:</p>
+							<p class="code">git add .</p>
+						</li>
+						<li>
+							<p>Dodanie konkretnego pliku:</p> 
+							<p class="code">git add my_file</p>
+						</li>
+						<li>
+							<p>Jednak nie chcę śledzić tego pliku..</p> 
+							<p class="code">git rm --cached my_file</p>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h2 class="code">git commit</h2>
+						<br/>
+						<ul>
+							<li>Jestem gotowa na zapisanie moich zmian!</li>
+							<br/>
+							<p class="code">git commit -m 'my first commit :-)'</p>
+							<p class="code">git commit . -m 'my first commit'</p>
+						</ul>
+					</section>
+					<section>
+						<img src="git_commit.png">
+						<p><small>http://xkcd.com/1296/</small></p>
+					</section>	
+				</section>
+
+				<section>
+					<h2 class="code">git log</h2>
+					<br/>
+						<ul>
+							<li>Wyświetlamy wszystkie commity:</li>
+							<br/>
+							<p class="code">git log --graph –-pretty=oneline</p>
+						</ul>
+				</section>
+
+				<section>
+					<h2 class="code">git diff</h2>
+					<br/>
+						<ul>
+							<li>Co zmieniło się od ostatniej operacji commit?</li>
+							<li>Wyświetl różnice w jednej linii:</li>
+							<br/>
+							<p class="code">git diff –-color-words</p>
+						</ul>
+				</section>
+
+				<section>
+					<section>	
+						<h2 class="code">git reset</h2>
+						<br/>
+							<ul>
+								<li>Cofanie ostatnich commitów:</li>
+								<br/>
+								<p class="code">git reset HEAD~1</p>
+								<br>
+								<li>Ściąganie plików ze 'sceny':</li>
+								<br/>
+								<p class="code">git reset HEAD .</p>
+								<p class="code">git reset HEAD my_file</p>
+							</ul>
+					</section>
+					<section>
+						<h4>Uwaga na opcję –-hard,</h4>
+						<h4><strong>nieodwracalnie</strong></h4>
+						<h4>usuwa wszystkie zmiany!</h4>
+					</section>
+				</section>
+
+			<section>
+				<h3>Do dzieła!</h3>
+				<ol>
+					<li>Stwórzcie puste repozytorium</li>
+					<li>Dodajcie dowolny plik (np. zadanie domowe z poprzedniego tygodnia ;-))</li>
+					<li>Dodajcie plik do repozytorium i wykonajcie pierwszy commit</li>
+					<li>Wprowadźcie zmiany w pliku</li>
+					<li>Wyświetlcie status repozytorium</li>
+					<li>Zobaczcie co zmieniło się w pliku</li>
+					<li>Dodajcie commita ze zmianami</li>
+					<li>Dodajcie kolejny plik</li>
+					<li>Wprowadźcie zmiany w obu plikach</li>
+					<li>Dodajcie commit ze zmianami tylko w nowym pliku</li>
+				</ol>
+			</section>
+
+			<section>
+				<h3>Praca ze zdalnym repozytorium</h3>
+			</section>
+
+			<section>
+				<h2 class="code">git clone</h2>
+				<br/>
+				<ul>
+					<li>Klonowanie istniejącego repozytorium:</li>
+					<br/>
+					<p class="code">git clone https://github.com/basial/CodeCarrotsJS.git</p>
+				</ul>
+			</section>
+			
+			<section>
+				<section>
+					<h2 class="code">git remote</h2>
+					<br/>
+					<ul>
+						<li>Dodawanie zdalnego repozytorium :</li>
+						<p><small class="code">git remote add origin git@github:basial/CodeCarrotsJS.git</small></p>
+						<li>Wyświetlanie listy wszystkich zdalnych repo:</li>
+						<p class="code">git remote -v</p>
+						<li>Usuwanie:</li>
+						<p class="code">git remote remove origin</p>
+					</ul>
+				</section>
+				<section>
+					<img src="git-flow.png">
+				</section>
+			</section>
+
+			<section>
+				<section>	
+					<h2 class="code">git push</h2>
+					<br/>
+					<ul>
+						<li>Dodajmy nasze zmiany do zdalnego repozytorium!</li>
+						<li>Pierwszy push:</li>
+						<p class="code">git push -u origin master</p>
+						<li>Później już tylko:</li>
+						<p class="code">git push</p>
+					</ul>
+				</section>
+				<section>
+					<h2 class="code">ssh-key</h2>
+						<p class="code left">https://help.github.com/articles/generating-ssh-keys/</p>
+						<p class="code left">ls -al ~/.ssh</p>
+						<p class="code left">ssh-keygen -t rsa -C "your_email@example.com"</p>
+						<p class="code left">eval "$(ssh-agent -s)"</p>
+						<p class="code left">ssh-add ~/.ssh/id_rsa</p>
+				</section>
+			</section>
+
+			<section>
+				<h2 class="code">git pull i merge</h2>
+				<ul>	
+					<li>Ściąganie zmian ze zdalnego repozytorium:</li>
+					<p class="code">git pull</p>
+					<li>Co jeśli jeden plik został zmieniony zdalnie i lokalnie?</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>Wykorzystajmy wiedzę w praktyce!</h3>
+				<ol>
+					<li>Stwórzcie zdalne repozytorium na GitHubie</li>
+					<li>Połączcie je ze swoim repozytorium lokalnym</li>
+					<li>Dodajcie swój pierwszy commit do zdalnego repozytorium</li>
+				</ol>
+			</section>
+
+			<section>
+				<img src="success.jpg">
+			</section>
+
+			</div>
 		</div>
 
 		<script src="src/reveal.js/lib/js/head.min.js"></script>

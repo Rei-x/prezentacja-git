@@ -1,4 +1,4 @@
-Szkielet prezentacji
-====================
+Prezentacja dostępna pod adresem: http://codecarrotsjs.github.io/prezentacja-git/#/
 
-Dostępny pod adresem: http://codecarrotsjs.github.io/szkielet-prezentacji/#/
+Instalacja: http://git-scm.com/book/pl/v1/Pierwsze-kroki-Instalacja-Git
+Dokumentacja: http://git-scm.com/doc
