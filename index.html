@@ -111,27 +111,18 @@
 				<section>
 					<section>
 						<h3>Konfiguracja</h3>
-						
-						<ul>
-							<li>
-								<p>Ustawiamy swoje dane:</p>
-								<p class="code">git config --global user.name „...”</p>
-								<p class="code">git config --global user.email ...</p>
-							</li>
-						<ul>
+						<p>Ustawiamy swoje dane:</p>
+						<pre><code class="bash" data-trim contenteditable>git config --global user.name „...”</code></pre>
+						<pre><code class="bash" data-trim contenteditable>git config --global user.email ...</code></pre>
 					</section>
 					<section>
-						<ul>
-							<li>
-								<p>Konfiguracja może być przechowywana w plikach:</p>
-								<p class="code">/etc/gitconfig</p>
-								<p class="code">~/.gitconfig</p>
-								<p class="code">.git/config</p>
-							</li>
-							<li>
-								<p>Aby wyświetlić wszystkie ustawienia:</p>
-								<p class="code">git config –-list</p>
-						</ul>
+						<p>Konfiguracja może być przechowywana w plikach:</p>
+						<pre><code class="bash" data-trim contenteditable>/etc/gitconfig</code></pre>
+						<pre><code class="bash" data-trim contenteditable>~/.gitconfig</code></pre>
+						<pre><code class="bash" data-trim contenteditable>.git/config</code></pre>
+						
+						<p>Aby wyświetlić wszystkie ustawienia:</p>
+						<pre><code class="bash" data-trim contenteditable>git config –-list</code></pre>
 					</section>
 				</section>
 
@@ -206,34 +197,21 @@
 
 				<section>
 					<h2 class="code">git add/rm</h2>
-					<br/>
-					<ul>
-						<li>Czas wprowadzić zmiany!</li>
-						<li>
-							<p>Dodanie wszystkich zmian:</p>
-							<p class="code">git add .</p>
-						</li>
-						<li>
-							<p>Dodanie konkretnego pliku:</p> 
-							<p class="code">git add my_file</p>
-						</li>
-						<li>
-							<p>Jednak nie chcę śledzić tego pliku..</p> 
-							<p class="code">git rm --cached my_file</p>
-						</li>
-					</ul>
+					<p>Czas wprowadzić zmiany!</p>
+					<p>Dodanie wszystkich zmian:</p>
+					<pre><code class="bash" data-trim contenteditable>git add .</code></pre>
+					<p>Dodanie konkretnego pliku:</p> 
+					<pre><code class="bash" data-trim contenteditable>git add my_file</code></pre>
+					<p>Jednak nie chcę śledzić tego pliku..</p> 
+					<pre><code class="bash" data-trim contenteditable>git rm --cached my_file</code></pre>
 				</section>
 
 				<section>
 					<section>
 						<h2 class="code">git commit</h2>
-						<br/>
-						<ul>
-							<li>Jestem gotowa na zapisanie moich zmian!</li>
-							<br/>
-							<p class="code">git commit -m 'my first commit :-)'</p>
-							<p class="code">git commit . -m 'my first commit'</p>
-						</ul>
+						<p>Jestem gotowa na zapisanie moich zmian!</p>
+						<pre><code class="bash" data-trim contenteditable>git commit -m 'my first commit :-)'</code></pre>
+						<pre><code class="bash" data-trim contenteditable>git commit . -m 'my first commit'</code></pre>
 					</section>
 					<section>
 						<img src="git_commit.png">
@@ -243,39 +221,27 @@
 
 				<section>
 					<h2 class="code">git log</h2>
-					<br/>
-						<ul>
-							<li>Wyświetlamy wszystkie commity:</li>
-							<br/>
-							<p class="code">git log --graph –-pretty=oneline</p>
-						</ul>
+					<p>Wyświetlamy wszystkie commity:</p>
+					<pre><code class="bash" data-trim contenteditable>git log --graph –-pretty=oneline</code></pre>
 				</section>
 
 				<section>
 					<h2 class="code">git diff</h2>
-					<br/>
-						<ul>
-							<li>Co zmieniło się od ostatniej operacji commit?</li>
-							<li>Wyświetl różnice w jednej linii:</li>
-							<br/>
-							<p class="code">git diff –-color-words</p>
-						</ul>
+					<p>Co zmieniło się od ostatniej operacji commit?</p>
+					<p>Wyświetl różnice w jednej linii:</p>
+					<pre><code class="bash" data-trim contenteditable>git diff –-color-words</code></pre>
 				</section>
 
 				<section>
 					<section>	
 						<h2 class="code">git reset</h2>
+						<p>Cofanie ostatnich commitów:</p>
+						<pre><code class="bash" data-trim contenteditable>git reset HEAD~1</code></pre>
+						<br>
+						<p>Ściąganie plików ze 'sceny':</p>
 						<br/>
-							<ul>
-								<li>Cofanie ostatnich commitów:</li>
-								<br/>
-								<p class="code">git reset HEAD~1</p>
-								<br>
-								<li>Ściąganie plików ze 'sceny':</li>
-								<br/>
-								<p class="code">git reset HEAD .</p>
-								<p class="code">git reset HEAD my_file</p>
-							</ul>
+						<pre><code class="bash" data-trim contenteditable>git reset HEAD .</code></pre>
+						<pre><code class="bash" data-trim contenteditable>git reset HEAD my_file</code></pre>
 					</section>
 					<section>
 						<h4>Uwaga na opcję –-hard,</h4>
@@ -306,26 +272,19 @@
 
 			<section>
 				<h2 class="code">git clone</h2>
-				<br/>
-				<ul>
-					<li>Klonowanie istniejącego repozytorium:</li>
-					<br/>
-					<p class="code">git clone https://github.com/basial/CodeCarrotsJS.git</p>
-				</ul>
+				<p>Klonowanie istniejącego repozytorium:</p>
+				<pre><code class="bash" data-trim contenteditable>git clone https://github.com/basial/CodeCarrotsJS.git</code></pre>
 			</section>
 			
 			<section>
 				<section>
 					<h2 class="code">git remote</h2>
-					<br/>
-					<ul>
-						<li>Dodawanie zdalnego repozytorium :</li>
-						<p><small class="code">git remote add origin git@github:basial/CodeCarrotsJS.git</small></p>
-						<li>Wyświetlanie listy wszystkich zdalnych repo:</li>
-						<p class="code">git remote -v</p>
-						<li>Usuwanie:</li>
-						<p class="code">git remote remove origin</p>
-					</ul>
+					<p>Dodawanie zdalnego repozytorium :</p>
+					<pre><code class="bash" data-trim contenteditable>git remote add origin git@github:basial/CodeCarrotsJS.git</code></pre>
+					<p>Wyświetlanie listy wszystkich zdalnych repo:</p>
+					<pre><code class="bash" data-trim contenteditable>git remote -v</code></pre>
+					<p>Usuwanie:</p>
+					<pre><code class="bash" data-trim contenteditable>git remote remove origin</code></pre>
 				</section>
 				<section>
 					<img src="git-flow.png">
@@ -335,32 +294,27 @@
 			<section>
 				<section>	
 					<h2 class="code">git push</h2>
-					<br/>
-					<ul>
-						<li>Dodajmy nasze zmiany do zdalnego repozytorium!</li>
-						<li>Pierwszy push:</li>
-						<p class="code">git push -u origin master</p>
-						<li>Później już tylko:</li>
-						<p class="code">git push</p>
-					</ul>
+					<p>Dodajmy nasze zmiany do zdalnego repozytorium!</p>
+					<p>Pierwszy push:</p>
+					<pre><code class="bash" data-trim contenteditable>git push -u origin master</code></pre>
+					<p>Później już tylko:</p>
+					<pre><code class="bash" data-trim contenteditable>git push</code></pre>
 				</section>
 				<section>
 					<h2 class="code">ssh-key</h2>
-						<p class="code left">https://help.github.com/articles/generating-ssh-keys/</p>
-						<p class="code left">ls -al ~/.ssh</p>
-						<p class="code left">ssh-keygen -t rsa -C "your_email@example.com"</p>
-						<p class="code left">eval "$(ssh-agent -s)"</p>
-						<p class="code left">ssh-add ~/.ssh/id_rsa</p>
+						<pre><code class="bash" data-trim contenteditable>https://help.github.com/articles/generating-ssh-keys/</code></pre>
+						<pre><code class="bash" data-trim contenteditable>ls -al ~/.ssh</code></pre>
+						<pre><code class="bash" data-trim contenteditable>ssh-keygen -t rsa -C "your_email@example.com"</code></pre>
+						<pre><code class="bash" data-trim contenteditable>eval "$(ssh-agent -s)"</code></pre>
+						<pre><code class="bash" data-trim contenteditable>ssh-add ~/.ssh/id_rsa</code></pre>
 				</section>
 			</section>
 
 			<section>
 				<h2 class="code">git pull i merge</h2>
-				<ul>	
-					<li>Ściąganie zmian ze zdalnego repozytorium:</li>
-					<p class="code">git pull</p>
-					<li>Co jeśli jeden plik został zmieniony zdalnie i lokalnie?</li>
-				</ul>
+				<p>Ściąganie zmian ze zdalnego repozytorium:</p>
+				<pre><code class="bash" data-trim contenteditable>git pull</code></pre>
+				<p>Co jeśli jeden plik został zmieniony zdalnie i lokalnie?</p>
 			</section>
 
 			<section>
