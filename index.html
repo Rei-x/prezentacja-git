@@ -92,6 +92,9 @@
 						</ul>
 					</section>
 					<section>
+						<img src="centralised_small.png">
+					</section>
+					<section>
 						<img src="distributed_small.png">
 					</section>
 				</section>
@@ -143,6 +146,30 @@
 
 				<section>
 					<section>
+						<h3>Jak to działa?</h3>
+						<p>Plik może znajdować się w czterech stanach:</p>
+						<ul>
+							<li class="fragment roll-in"><strong>nieśledzony</strong> (eng. <span class="code">untracked</span>, zaraz po stworzeniu nowego pliku)</li>
+							<li class="fragment roll-in"><strong>zmodyfikowany</strong> (eng. <span class="code">modified</span>, plik zmieniony, zmiany niezapisane do bazy)</li>
+							<li class="fragment roll-in"><strong>śledzony</strong> (eng. <span class="code">staged</span>, zmiany przeznaczone do zatwierdzenia przy następnej operacji <span class="code">commit</span>)</li>
+							<li class="fragment roll-in"><strong>zatwierdzony/niezmodyfikowany</strong> (eng. <span class="code">commited/unmodified</span>, bezpiecznie zachowany w lokalnej bazie danych)</li>
+						</ul>
+					</section>
+					<section>
+						<img src="states.png">
+					</section>
+					<section>
+						<h3>Jak to działa</h3>
+						<ol>
+							<li>Dokonujesz modyfikacji plików w katalogu roboczym.</li>
+							<li>Oznaczasz zmodyfikowane pliki jako śledzone (<span class="code">add</span>), dodając ich bieżący stan do przechowalni.</li>
+							<li>Dokonujesz zatwierdzenia (<span class="code">commit</span>), podczas którego zawartość plików z przechowalni jest zapisywana.</li>
+						</ol>
+					</section>
+				</section>
+
+				<section>
+					<section>
 						<h2 class="code">git status</h2>
 						<br/>
 						<p>Podglądamy repozytorium</p>
@@ -168,30 +195,6 @@
 								<p><small>(Spowoduje, że git zignoruje wszystkie pliki o rozszerzeniu .txt</small></p>
 							</li>
 						</ul>	
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>Jak to działa?</h3>
-						<p>Plik może znajdować się w czterech stanach:</p>
-						<ul>
-							<li class="fragment roll-in"><strong>nieśledzony</strong> (eng. <span class="code">untracked</span>, zaraz po stworzeniu nowego pliku)</li>
-							<li class="fragment roll-in"><strong>śledzony</strong> (eng. <span class="code">staged</span>, zmiany przeznaczone do zatwierdzenia przy następnej operacji <span class="code">commit</span>)</li>
-							<li class="fragment roll-in"><strong>zmodyfikowany</strong> (eng. <span class="code">modified</span>, plik zmieniony, zmiany niezapisane do bazy)</li>
-							<li class="fragment roll-in"><strong>zatwierdzony</strong> (eng. <span class="code">commited</span>, bezpiecznie zachowany w lokalnej bazie danych)</li>
-						</ul>
-					</section>
-					<section>
-						<img src="git-flow.png">
-					</section>
-					<section>
-						<h3>Jak to działa</h3>
-						<ol>
-							<li>Dokonujesz modyfikacji plików w katalogu roboczym.</li>
-							<li>Oznaczasz zmodyfikowane pliki jako śledzone (<span class="code">add</span>), dodając ich bieżący stan do przechowalni.</li>
-							<li>Dokonujesz zatwierdzenia (<span class="code">commit</span>), podczas którego zawartość plików z przechowalni jest zapisywana.</li>
-						</ol>
 					</section>
 				</section>
 
@@ -302,7 +305,7 @@
 				</section>
 				<section>
 					<h2 class="code">ssh-key</h2>
-						<pre><code class="bash" data-trim contenteditable>https://help.github.com/articles/generating-ssh-keys/</code></pre>
+						<p>https://help.github.com/articles/generating-ssh-keys/</p>
 						<pre><code class="bash" data-trim contenteditable>ls -al ~/.ssh</code></pre>
 						<pre><code class="bash" data-trim contenteditable>ssh-keygen -t rsa -C "your_email@example.com"</code></pre>
 						<pre><code class="bash" data-trim contenteditable>eval "$(ssh-agent -s)"</code></pre>
