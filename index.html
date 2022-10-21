@@ -1,373 +1,633 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
 
-	<head>
-		<meta charset="utf-8">
+    <title>Bartosz Gotowski - prezentacja z gita dla IST 2022</title>
 
-		<title>Code Carrots JS</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="stylesheet" href="/src/reveal.js/css/reveal.min.css" />
+    <link
+      rel="stylesheet"
+      href="/src/reveal.js/css/theme/default.css"
+      id="theme"
+    />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="src/reveal.js/lib/css/zenburn.css" />
 
-		<link rel="stylesheet" href="src/reveal.js/css/reveal.min.css">
-		<link rel="stylesheet" href="src/reveal.js/css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="css/custom.css" />
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="src/reveal.js/lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if (window.location.search.match(/print-pdf/gi)) {
+        var link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        link.href = "src/reveal.js/css/print/pdf.css";
+        document.getElementsByTagName("head")[0].appendChild(link);
+      }
+    </script>
+		<style>
+			:root {
+            --color: 255, 71, 84;
+            --cursor-size: 30px;
+        }
 
-		<link rel="stylesheet" href="css/custom.css">
+				* {
+            cursor: none;
+        }
 
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-		<script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'src/reveal.js/css/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
-		</script>
+			.custom-cursor {
+            position: absolute;
+            z-index: 10000;
+            top: 0;
+            left: 0;
+ 
+            width: var(--cursor-size);
+            height: var(--cursor-size);
+ 
+            border: calc(var(--cursor-size)
+                        / 30) solid #fff;
+            border-radius: 50%;
 
-		<!--[if lt IE 9]>
-		<script src="src/reveal.js/lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+        }
+ 
+        .custom-cursor::before {
+            content: "";
+            display: block;
+            width: calc(var(--cursor-size) / 2);
+            height: calc(var(--cursor-size) / 2);
+ 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+ 
+            border: calc(var(--cursor-size) / 6)
+                    solid rgba(var(--color), 0.5);
+ 
+            border-radius: 50%;
+ 
+        }
+ 
+        .custom-cursor.click {
+            animation: cursor-click 800ms
+                normal ease-in-out;
+        }
+ 
+ 
+        @keyframes cursor {
+            from {
+                transform: scale(1);
+                border-color: #fff;
+            }
+ 
+            to {
+                transform: scale(1.5);
+                border-color: rgb(var(--color));
+            }
+        }
+ 
+        @keyframes cursor-before {
+            from {
+                transform: translate(-50%, -50%) scale(1);
+                border-color: rgba(var(--color), 0.5);
+            }
+ 
+            to {
+                transform: translate(-50%, -50%) scale(1.5);
+                border-color: rgba(var(--color), 0.75);
+            }
+        }
+ 
+        @keyframes cursor-click {
+ 
+            0%,
+            100% {
+                transform: scale(1);
+            }
+ 
+            50% {
+                transform: scale(2.5);
+                border-color: rgb(var(--color));
+            }
+        }
+		</style>
 
-	<body>
+    <!--[if lt IE 9]>
+      <script src="src/reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
 
-		<div class="background">
-			<a href="http://geekgirlscarrots.pl/"><img src="gfx/ggc_logo.svg"></a>
-		</div>
+  <body>
+    <div class="reveal">
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <br />
+          <h3>System kontroli wersji <strong>GIT</strong></h3>
+          <br />
+          <p>
+            <small
+              >Autorka prezentacji:
+              <a target="_blank" href="mailto:litwinska.barbara@gmail.com"
+                >Barbara Litwińska</a
+              ></small
+            >
+            <br />
+            <small> Zmiany w prezentacji: <a> Bartosz Gotowski </a></small>
+          </p>
+        </section>
 
-		<div class="reveal">
+        <section>
+          <h3>Czego się dziś nauczymy?</h3>
+          <div class="fragment roll-in">Czym jest git?</div>
+          <br />
+          <div class="fragment roll-in">
+            <p>Konfiguracja</p>
+            <small class="code">(git config)</small>
+          </div>
+          <div class="fragment roll-in">
+            <p>Podstawy pracy z gitem i moje pierwsze repo</p>
+            <small class="code"
+              >(git init, status, add, rm, commit, log, diff, reset)</small
+            >
+          </div>
+          <div class="fragment roll-in">
+            <p>Praca ze zdalnym repozytorium</p>
+            <small class="code">(git clone, pull, merge, push)</small>
+          </div>
+          <div class="fragment roll-in">
+            <p>Intellij i git</p>
+            <small class="code">
+              <ul>
+                <li>plik .gitignore</li>
+                <li>jak używać gita z poziomu Intellija</li>
+              </ul>
+            </small>
+          </div>
+          <div class="fragment roll-in">
+            <p>Używanie gita w pracy</p>
+            <small class="code">
+              <ul>
+                <li>git flow</li>
+                <li>rozwiązywanie konfliktów</li>
+              </ul>
+            </small>
+          </div>
+        </section>
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
+        <section>
+          <h2>1. Wprowadzenie do gita</h2>
+        </section>
+
+        <section>
+          <section>
+            <h3>Czym jest git?</h3>
+            <ul>
+              <li>Git to rozproszony system kontroli wersji</li>
+              <li>
+                Pozwala m.in. na:
+                <ul>
+                  <li>śledzenie zmian w plikach</li>
+                  <li>łatwy powrót do wcześniejszej wersji pliku</li>
+                  <li>sprawną zdalną współpracę</li>
+                </ul>
+              </li>
+              <li>'Nie programuję, czy potrzebny mi git?'</li>
+            </ul>
+          </section>
+          <section>
+            <img src="centralised_small.png" />
+          </section>
+          <section>
+            <img src="distributed_small.png" />
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Konsola czy aplikacje do GITa?</h3>
+          </section>
+          <section>
+            <img src="konsola.png" />
+          </section>
+          <section>
+            <img src="ghwindows.png" />
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Konfiguracja</h3>
+            <p>Ustawiamy swoje dane:</p>
+            <pre><code class="bash" data-trim contenteditable>git config --global user.name „...”</code></pre>
+            <pre><code class="bash" data-trim contenteditable>git config --global user.email ...</code></pre>
+          </section>
+          <section>
+            <p>Konfiguracja może być przechowywana w plikach:</p>
+            <pre><code class="bash" data-trim contenteditable>/etc/gitconfig</code></pre>
+            <pre><code class="bash" data-trim contenteditable>~/.gitconfig</code></pre>
+            <pre><code class="bash" data-trim contenteditable>.git/config</code></pre>
+
+            <p>Aby wyświetlić wszystkie ustawienia:</p>
+            <pre><code class="bash" data-trim contenteditable>git config –-list</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <h2>2. Podstawy pracy z gitem i moje pierwsze repo</h2>
+        </section>
+
+        <section>
+          <h2 class="code">git init</h2>
+          <br />
+          <p>
+            Wywołane w istniejącym katalogu utworzy podkatalog .git zawierający
+            szkielet repozytorium
+          </p>
+          <br />
+          <small class="code fragment roll-in">
+            <p>Initialized empty Git repository</p>
+            <img src="success.jpg" />
+          </small>
+        </section>
+
+        <section>
+          <section>
+            <h3>Jak to działa?</h3>
+            <p>Plik może znajdować się w czterech stanach:</p>
+            <ul>
+              <li class="fragment roll-in">
+                <strong>nieśledzony</strong> (eng.
+                <span class="code">untracked</span>, zaraz po stworzeniu nowego
+                pliku)
+              </li>
+              <li class="fragment roll-in">
+                <strong>zmodyfikowany</strong> (eng.
+                <span class="code">modified</span>, plik zmieniony, zmiany
+                niezapisane do bazy)
+              </li>
+              <li class="fragment roll-in">
+                <strong>śledzony</strong> (eng.
+                <span class="code">staged</span>, zmiany przeznaczone do
+                zatwierdzenia przy następnej operacji
+                <span class="code">commit</span>)
+              </li>
+              <li class="fragment roll-in">
+                <strong>zatwierdzony/niezmodyfikowany</strong> (eng.
+                <span class="code">commited/unmodified</span>, bezpiecznie
+                zachowany w lokalnej bazie danych)
+              </li>
+            </ul>
+          </section>
+          <section>
+            <img src="states.png" />
+          </section>
+          <section>
+            <h3>Jak to działa</h3>
+            <ol>
+              <li>Dokonujesz modyfikacji plików w katalogu roboczym.</li>
+              <li>
+                Oznaczasz zmodyfikowane pliki jako śledzone (<span class="code"
+                  >add</span
+                >), dodając ich bieżący stan do przechowalni.
+              </li>
+              <li>
+                Dokonujesz zatwierdzenia (<span class="code">commit</span>),
+                podczas którego zawartość plików z przechowalni jest zapisywana.
+              </li>
+            </ol>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2 class="code">git status</h2>
+            <br />
+            <p>Podglądamy repozytorium</p>
+            <br />
+            <small class="code fragment roll-in">
+              <p>On branch master</p>
+              <p>nothing to commit, working directory clean</p>
+            </small>
+          </section>
+        </section>
+
+        <section>
+          <h2 class="code">git add/rm</h2>
+          <p>Czas wprowadzić zmiany!</p>
+          <p>Dodanie wszystkich zmian:</p>
+          <pre><code class="bash" data-trim contenteditable>git add .</code></pre>
+          <p>Dodanie konkretnego pliku:</p>
+          <pre><code class="bash" data-trim contenteditable>git add my_file</code></pre>
+          <p>Jednak nie chcę śledzić tego pliku..</p>
+          <pre><code class="bash" data-trim contenteditable>git rm --cached my_file</code></pre>
+        </section>
+
+        <section>
+          <section>
+            <h2 class="code">git commit</h2>
+            <p>Jestem gotowa na zapisanie moich zmian!</p>
+            <pre><code class="bash" data-trim contenteditable>git commit -m 'my first commit :-)'</code></pre>
+            <pre><code class="bash" data-trim contenteditable>git commit . -m 'my first commit'</code></pre>
+          </section>
+          <section>
+            <img src="git_commit.png" />
+            <p><small>http://xkcd.com/1296/</small></p>
+          </section>
+        </section>
+
+        <section>
+          <h2 class="code">git log</h2>
+          <p>Wyświetlamy wszystkie commity:</p>
+          <pre><code class="bash" data-trim contenteditable>git log --graph –-pretty=oneline</code></pre>
+        </section>
+
+        <section>
+          <h3>Praca ze zdalnym repozytorium</h3>
+        </section>
+
+        <section>
+          <h2 class="code">git clone</h2>
+          <p>Klonowanie istniejącego repozytorium:</p>
+          <pre><code class="bash" data-trim contenteditable>git clone https://github.com/basial/CodeCarrotsJS.git</code></pre>
+        </section>
+
+        <section>
+          <section>
+            <h2 class="code">git remote</h2>
+            <p>Dodawanie zdalnego repozytorium :</p>
+            <pre><code class="bash" data-trim contenteditable>git remote add origin git@github.com:Rei-x/prezentacja-git.git</code></pre>
+            <p>Wyświetlanie listy wszystkich zdalnych repo:</p>
+            <pre><code class="bash" data-trim contenteditable>git remote -v</code></pre>
+            <p>Usuwanie:</p>
+            <pre><code class="bash" data-trim contenteditable>git remote remove origin</code></pre>
+          </section>
+          <section>
+            <img src="git-flow.png" />
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2 class="code">git push</h2>
+            <p>Dodajmy nasze zmiany do zdalnego repozytorium!</p>
+            <p>Pierwszy push:</p>
+            <pre><code class="bash" data-trim contenteditable>git push -u origin master</code></pre>
+            <p>Później już tylko:</p>
+            <pre><code class="bash" data-trim contenteditable>git push</code></pre>
+          </section>
+        </section>
+
+        <section>
+          <h2 class="code">git pull i merge</h2>
+          <p>Ściąganie zmian ze zdalnego repozytorium:</p>
+          <pre><code class="bash" data-trim contenteditable>git pull</code></pre>
+          <p>Co jeśli jeden plik został zmieniony zdalnie i lokalnie?</p>
+        </section>
+
 				<section>
-					<br/>
-					<h1>Code Carrots</h1>
-					<h3>System kontroli wersji <strong>GIT</strong></h3>
-					<br/>
-					<p>
-						<small>Autorka prezentacji: <a target="_blank" href="mailto:litwinska.barbara@gmail.com">Barbara Litwińska</a></small>
-					</p>
-				</section>
-
-				<section>
-					<h3>Czego się dziś nauczymy?</h3>
-					<div class="fragment roll-in">Czym jest git?</div>
-					<br/>
-					<div class="fragment roll-in">
-						<p>Konfiguracja</p>
-						<small class="code">(git config)</small>
-					</div>
-					<div class="fragment roll-in">
-						<p>Podstawy pracy z gitem i moje pierwsze repo</p>
-					  <small class="code">(git init, status, add, rm, commit, log, diff, reset)</small>
-					</div>
-					<div class="fragment roll-in">
-						<p>Praca ze zdalnym repozytorium</p>
-						<small class="code">(git clone, pull, merge, push)</small>
-					</div>
-				</section>
-
-				<section>
-					<section>	
-						<h3>Czym jest git?</h3>
-						<ul>
-							<li>Git to rozproszony system kontroli wersji</li>
-							<li>Pozwala m.in. na:
-								<ul>
-									<li>śledzenie zmian w plikach</li>
-									<li>łatwy powrót do wcześniejszej wersji pliku</li>
-									<li>sprawną zdalną współpracę</li>
-								</ul>
-							</li>
-							<li>'Nie programuję, czy potrzebny mi git?'</li>
-						</ul>
+					<section>
+						<h2>branche</h2>
+						<p>czyli taka niby kopia ale jednak nie</p>
 					</section>
 					<section>
-						<img src="centralised_small.png">
+						<img src="zeszyty.bmp" />
 					</section>
 					<section>
-						<img src="distributed_small.png">
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>Konsola czy Git for Windows?</h3>	
+						<img src="branch.bmp" />
 					</section>
 					<section>
-						<img src="konsola.png">
-					</section>
-					<section>
-						<img src="ghwindows.png">
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>Konfiguracja</h3>
-						<p>Ustawiamy swoje dane:</p>
-						<pre><code class="bash" data-trim contenteditable>git config --global user.name „...”</code></pre>
-						<pre><code class="bash" data-trim contenteditable>git config --global user.email ...</code></pre>
-					</section>
-					<section>
-						<p>Konfiguracja może być przechowywana w plikach:</p>
-						<pre><code class="bash" data-trim contenteditable>/etc/gitconfig</code></pre>
-						<pre><code class="bash" data-trim contenteditable>~/.gitconfig</code></pre>
-						<pre><code class="bash" data-trim contenteditable>.git/config</code></pre>
-						
-						<p>Aby wyświetlić wszystkie ustawienia:</p>
-						<pre><code class="bash" data-trim contenteditable>git config –-list</code></pre>
-					</section>
-				</section>
-
-				<section>
-					<h3>Podstawy pracy z gitem i moje pierwsze repo</h3>
-				</section>
-
-				<section>
-					<h2 class="code">git init</h2>
-					<br/>
-					<p>Wywołane w istniejącym katalogu utworzy podkatalog .git zawierający szkielet repozytorium</p>
-					<br>
-					<small class="code fragment roll-in">
-						<p>Initialized empty Git repository</p>
-						<img src="success.jpg">
-					</small>
-				</section>
-
-				<section>
-					<section>
-						<h3>Jak to działa?</h3>
-						<p>Plik może znajdować się w czterech stanach:</p>
-						<ul>
-							<li class="fragment roll-in"><strong>nieśledzony</strong> (eng. <span class="code">untracked</span>, zaraz po stworzeniu nowego pliku)</li>
-							<li class="fragment roll-in"><strong>zmodyfikowany</strong> (eng. <span class="code">modified</span>, plik zmieniony, zmiany niezapisane do bazy)</li>
-							<li class="fragment roll-in"><strong>śledzony</strong> (eng. <span class="code">staged</span>, zmiany przeznaczone do zatwierdzenia przy następnej operacji <span class="code">commit</span>)</li>
-							<li class="fragment roll-in"><strong>zatwierdzony/niezmodyfikowany</strong> (eng. <span class="code">commited/unmodified</span>, bezpiecznie zachowany w lokalnej bazie danych)</li>
-						</ul>
-					</section>
-					<section>
-						<img src="states.png">
-					</section>
-					<section>
-						<h3>Jak to działa</h3>
-						<ol>
-							<li>Dokonujesz modyfikacji plików w katalogu roboczym.</li>
-							<li>Oznaczasz zmodyfikowane pliki jako śledzone (<span class="code">add</span>), dodając ich bieżący stan do przechowalni.</li>
-							<li>Dokonujesz zatwierdzenia (<span class="code">commit</span>), podczas którego zawartość plików z przechowalni jest zapisywana.</li>
-						</ol>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h2 class="code">git status</h2>
-						<br/>
-						<p>Podglądamy repozytorium</p>
-						<br>
-						<small class="code fragment roll-in">
-							<p>On branch master</p>
-							<p>nothing to commit, working directory clean</p>
+						<h3>tworzenie nowego brancha</h3>
+						<small>
+							<ul>
+								<li class="code">git checkout -b "nazwa brancha"</li>
+								<li class="code">git branch "nazwa brancha" <br /> git checkout "nazwa brancha"</li>
+							</ul>
 						</small>
 					</section>
-					<section>
-						<h2 class="code">.gitignore</h2>
-						<br/>
-						<ul>
-							<li>Plik zawierający informacje, których plików nigdy nie chcemy dodawać do repozytorium.</li> 
-							<li>Nie będą one widoczne również po wywołaniu <span class="code">git status</span></li>
-							<br/>
-							<li>
-								<span class="code">secret.js</span>
-								<p><small>(Ukryje plik secret.js)</small></p>
-							</li>
-							<li> 
-								<span class="code">*.txt</span>
-								<p><small>(Spowoduje, że git zignoruje wszystkie pliki o rozszerzeniu .txt</small></p>
-							</li>
-						</ul>	
-					</section>
 				</section>
 
 				<section>
-					<h2 class="code">git add/rm</h2>
-					<p>Czas wprowadzić zmiany!</p>
-					<p>Dodanie wszystkich zmian:</p>
-					<pre><code class="bash" data-trim contenteditable>git add .</code></pre>
-					<p>Dodanie konkretnego pliku:</p> 
-					<pre><code class="bash" data-trim contenteditable>git add my_file</code></pre>
-					<p>Jednak nie chcę śledzić tego pliku..</p> 
-					<pre><code class="bash" data-trim contenteditable>git rm --cached my_file</code></pre>
+					<h2>Co robić gdy nie pamiętam komend?</h2>
+					<p><p class="code">--help</p> to the rescue!</p>
+				</section>
+
+    
+
+        <section>
+          <h2>3. Używanie gita w Intellij</h2>
+        </section>
+        <section>
+          <h2 class="code">.gitignore</h2>
+          <br />
+          <ul>
+            <li>
+              Plik zawierający informacje, których plików nigdy nie chcemy
+              dodawać do repozytorium.
+            </li>
+            <li>
+              Nie będą one widoczne również po wywołaniu
+              <span class="code">git status</span>
+            </li>
+            <br />
+            <li>
+              <span class="code">secret.js</span>
+              <p><small>(Ukryje plik secret.js)</small></p>
+            </li>
+						<li>
+              <span class="code">.idea/</span>
+              <p><small>(Ukryje wszystko w folderze .idea)</small></p>
+            </li>
+            <li>
+              <span class="code">*.txt</span>
+              <p>
+                <small
+                  >(Spowoduje, że git zignoruje wszystkie pliki o rozszerzeniu
+                  .txt</small
+                >
+              </p>
+            </li>
+          </ul>
+        </section>
+
+				<section>
+          <h2>Obsługa gita w IDE</h2>
+					<br/>
+					<ul>
+						<li>tworzenie repo</li>
+						<li>dodawanie plików</li>
+						<li>commitowanie plików</li>
+						<li>pushowanie</li>
+					</ul>
+        </section>
+
+				<section>
+					<h2>4. Git w pracy</h2>
+					<small>czyli to czego wam nie powiedzą w tutorialach</small>
 				</section>
 
 				<section>
-					<section>
-						<h2 class="code">git commit</h2>
-						<p>Jestem gotowa na zapisanie moich zmian!</p>
-						<pre><code class="bash" data-trim contenteditable>git commit -m 'my first commit :-)'</code></pre>
-						<pre><code class="bash" data-trim contenteditable>git commit . -m 'my first commit'</code></pre>
-					</section>
-					<section>
-						<img src="git_commit.png">
-						<p><small>http://xkcd.com/1296/</small></p>
-					</section>	
+					<h2>Git flow</h2>
+					<ul>
+						<li>tworzenie nowych funkcjonalności (feature branche)</li>
+						<li>nazywanie commitów</li>
+						<li>code review</li>
+						<li>Countinous integration/Countinous delivery</li>
+						<li>lecimy na produkcję 🥰</li>
+					</ul>
 				</section>
 
 				<section>
-					<h2 class="code">git log</h2>
-					<p>Wyświetlamy wszystkie commity:</p>
-					<pre><code class="bash" data-trim contenteditable>git log --graph –-pretty=oneline</code></pre>
+					<h2>Konflikty</h2>
+					<small>czyli co zrobić jak coś spierdolimy</small>
 				</section>
 
 				<section>
-					<h2 class="code">git diff</h2>
-					<p>Co zmieniło się od ostatniej operacji commit?</p>
-					<p>Wyświetl różnice w jednej linii:</p>
-					<pre><code class="bash" data-trim contenteditable>git diff –-color-words</code></pre>
+					<h2>Interaktywny rebase</h2>
+					<small>czyli co zrobić jak coś spierdolimy</small>
 				</section>
 
 				<section>
-					<section>	
-						<h2 class="code">git reset</h2>
-						<p>Cofanie ostatnich commitów:</p>
-						<pre><code class="bash" data-trim contenteditable>git reset HEAD~1</code></pre>
-						<br>
-						<p>Ściąganie plików ze 'sceny':</p>
-						<br/>
-						<pre><code class="bash" data-trim contenteditable>git reset HEAD .</code></pre>
-						<pre><code class="bash" data-trim contenteditable>git reset HEAD my_file</code></pre>
-					</section>
-					<section>
-						<h4>Uwaga na opcję –-hard,</h4>
-						<h4><strong>nieodwracalnie</strong></h4>
-						<h4>usuwa wszystkie zmiany!</h4>
-					</section>
+					<h2>5. Inne przydatne komendy</h2>
+					<small>których jednak nie używa się zbyt często</small>
 				</section>
 
-			<section>
-				<h3>Do dzieła!</h3>
-				<ol>
-					<li>Stwórzcie puste repozytorium</li>
-					<li>Dodajcie dowolny plik (np. zadanie domowe z poprzedniego tygodnia ;-))</li>
-					<li>Dodajcie plik do repozytorium i wykonajcie pierwszy commit</li>
-					<li>Wprowadźcie zmiany w pliku</li>
-					<li>Wyświetlcie status repozytorium</li>
-					<li>Zobaczcie co zmieniło się w pliku</li>
-					<li>Dodajcie commita ze zmianami</li>
-					<li>Dodajcie kolejny plik</li>
-					<li>Wprowadźcie zmiany w obu plikach</li>
-					<li>Dodajcie commit ze zmianami tylko w nowym pliku</li>
-				</ol>
-			</section>
-
-			<section>
-				<h3>Praca ze zdalnym repozytorium</h3>
-			</section>
-
-			<section>
-				<h2 class="code">git clone</h2>
-				<p>Klonowanie istniejącego repozytorium:</p>
-				<pre><code class="bash" data-trim contenteditable>git clone https://github.com/basial/CodeCarrotsJS.git</code></pre>
-			</section>
-			
-			<section>
 				<section>
-					<h2 class="code">git remote</h2>
-					<p>Dodawanie zdalnego repozytorium :</p>
-					<pre><code class="bash" data-trim contenteditable>git remote add origin git@github:basial/CodeCarrotsJS.git</code></pre>
-					<p>Wyświetlanie listy wszystkich zdalnych repo:</p>
-					<pre><code class="bash" data-trim contenteditable>git remote -v</code></pre>
-					<p>Usuwanie:</p>
-					<pre><code class="bash" data-trim contenteditable>git remote remove origin</code></pre>
-				</section>
+          <section>
+            <h2 class="code">git reset</h2>
+            <p>Cofanie ostatnich commitów:</p>
+            <pre><code class="bash" data-trim contenteditable>git reset HEAD~1</code></pre>
+            <br />
+            <p>Ściąganie plików ze 'sceny':</p>
+            <br />
+            <pre><code class="bash" data-trim contenteditable>git reset HEAD .</code></pre>
+            <pre><code class="bash" data-trim contenteditable>git reset HEAD my_file</code></pre>
+          </section>
+          <section>
+            <h4>Uwaga na opcję –-hard,</h4>
+            <h4><strong>nieodwracalnie</strong></h4>
+            <h4>usuwa wszystkie zmiany!</h4>
+          </section>
+        </section>
+
 				<section>
-					<img src="git-flow.png">
+					<h2>6. Open source</h2>
+					<small>jak to działa i z czym to się je</small>
 				</section>
-			</section>
 
-			<section>
-				<section>	
-					<h2 class="code">git push</h2>
-					<p>Dodajmy nasze zmiany do zdalnego repozytorium!</p>
-					<p>Pierwszy push:</p>
-					<pre><code class="bash" data-trim contenteditable>git push -u origin master</code></pre>
-					<p>Później już tylko:</p>
-					<pre><code class="bash" data-trim contenteditable>git push</code></pre>
-				</section>
 				<section>
-					<h2 class="code">ssh-key</h2>
-						<p>https://help.github.com/articles/generating-ssh-keys/</p>
-						<pre><code class="bash" data-trim contenteditable>ls -al ~/.ssh</code></pre>
-						<pre><code class="bash" data-trim contenteditable>ssh-keygen -t rsa -C "your_email@example.com"</code></pre>
-						<pre><code class="bash" data-trim contenteditable>eval "$(ssh-agent -s)"</code></pre>
-						<pre><code class="bash" data-trim contenteditable>ssh-add ~/.ssh/id_rsa</code></pre>
+					<h2>Czas na zabawe!</h2>
+					<small>jak to działa i z czym to się je</small>
 				</section>
-			</section>
 
-			<section>
-				<h2 class="code">git pull i merge</h2>
-				<p>Ściąganie zmian ze zdalnego repozytorium:</p>
-				<pre><code class="bash" data-trim contenteditable>git pull</code></pre>
-				<p>Co jeśli jeden plik został zmieniony zdalnie i lokalnie?</p>
-			</section>
+        <section>
+          <img src="success.jpg" />
+        </section>
+      </div>
+    </div>
 
-			<section>
-				<h3>Wykorzystajmy wiedzę w praktyce!</h3>
-				<ol>
-					<li>Stwórzcie zdalne repozytorium na GitHubie</li>
-					<li>Połączcie je ze swoim repozytorium lokalnym</li>
-					<li>Dodajcie swój pierwszy commit do zdalnego repozytorium</li>
-				</ol>
-			</section>
+    <script src="src/reveal.js/lib/js/head.min.js"></script>
+    <script src="src/reveal.js/js/reveal.min.js"></script>
 
-			<section>
-				<img src="success.jpg">
-			</section>
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
 
-			</div>
-		</div>
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || "default", // default/cube/page/concave/zoom/linear/fade/none
 
-		<script src="src/reveal.js/lib/js/head.min.js"></script>
-		<script src="src/reveal.js/js/reveal.min.js"></script>
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
 
-		<script>
-
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
-
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'src/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'src/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'src/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'src/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'src/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'src/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
-
-		</script>
-
-	</body>
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          {
+            src: "src/reveal.js/lib/js/classList.js",
+            condition: function () {
+              return !document.body.classList;
+            },
+          },
+          {
+            src: "src/reveal.js/plugin/markdown/marked.js",
+            condition: function () {
+              return !!document.querySelector("[data-markdown]");
+            },
+          },
+          {
+            src: "src/reveal.js/plugin/markdown/markdown.js",
+            condition: function () {
+              return !!document.querySelector("[data-markdown]");
+            },
+          },
+          {
+            src: "src/reveal.js/plugin/highlight/highlight.js",
+            async: true,
+            callback: function () {
+              hljs.initHighlightingOnLoad();
+            },
+          },
+          {
+            src: "src/reveal.js/plugin/zoom-js/zoom.js",
+            async: true,
+            condition: function () {
+              return !!document.body.classList;
+            },
+          },
+          {
+            src: "src/reveal.js/plugin/notes/notes.js",
+            async: true,
+            condition: function () {
+              return !!document.body.classList;
+            },
+          },
+        ],
+      });
+    </script>
+		<div class="custom-cursor"></div>
+    <script>
+        const cursor = document
+            .querySelector(".custom-cursor");
+ 
+        // Adding the animations when the
+        // mouse button is clicked
+ 
+        window.addEventListener("mousedown", (event) => {
+            if (!cursor.classList.contains("click")) {
+                cursor.classList.add("click");
+ 
+                setTimeout(() => {
+                    cursor.classList.remove("click");
+                }, 800);
+            }
+        });
+ 
+        // Getting the position of the cursor
+        window.addEventListener("mousemove", (event) => {
+            let x = event.pageX - cursor.offsetWidth / 2,
+                y = event.pageY - cursor.offsetHeight / 2;
+ 
+            cursor.style.left = `${x}px`;
+            cursor.style.top = `${y}px`;
+        });
+    </script>
+  </body>
 </html>
